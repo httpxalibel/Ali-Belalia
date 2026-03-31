@@ -1,16 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I Miss You</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<title>Cyber Hacker Page</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: monospace;
+    cursor:none;
+}
+
+/* Cursor */
+.cursor{
+    position:fixed;
+    width:15px;
+    height:15px;
+    border-radius:50%;
+    background:#00ff9f;
+    pointer-events:none;
+    box-shadow:0 0 20px #00ff9f;
+    z-index:9999;
+}
+
+/* Loader */
+#loader{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:black;
+    color:#00ff9f;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+    font-size:20px;
+}
+
+/* Scanlines */
+body::after{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background: repeating-linear-gradient(
+        rgba(0,0,0,0.2) 0px,
+        rgba(0,0,0,0.2) 2px,
+        transparent 2px,
+        transparent 4px
+    );
+    pointer-events:none;
+}
+
+/* Container */
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    background:black;
+    overflow:hidden;
+}
+
+.container{
+    text-align:center;
+    padding:40px;
+    background:rgba(0,0,0,0.7);
+    border-radius:20px;
+    box-shadow:0 0 40px #00ff9f;
+    transform-style: preserve-3d;
+    transition:0.2s;
+}
+
+/* Glitch */
+.glitch{
+    color:#00ff9f;
+    font-size:28px;
+    position:relative;
+}
+
+.glitch::before, .glitch::after{
+    content:attr(data-text);
+    position:absolute;
+    left:0;
+}
+
+.glitch::before{
+    color:red;
+    animation: glitch 1s infinite;
+}
+
+.glitch::after{
+    color:blue;
+    animation: glitch 1s infinite reverse;
+}
+
+@keyframes glitch{
+    0%{transform:translate(0);}
+    20%{transform:translate(-2px,2px);}
+    40%{transform:translate(2px,-2px);}
+    60%{transform:translate(-2px,-2px);}
+    80%{transform:translate(2px,2px);}
+    100%{transform:translate(0);}
+}
+
+/* Image */
+img{
+    width:140px;
+    border-radius:50%;
+    border:2px solid #00ff9f;
+    box-shadow:0 0 20px #00ff9f;
+    margin-bottom:10px;
+}
+
+/* Buttons */
+.btn{
+    display:inline-block;
+    margin:8px;
+    padding:10px 20px;
+    border:1px solid #00ff9f;
+    color:#00ff9f;
+    text-decoration:none;
+    border-radius:20px;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#00ff9f;
+    color:black;
+    box-shadow:0 0 20px #00ff9f;
+}
+
+/* Fade */
+.container{
+    animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <h1 class="title">I Miss You So Much</h1>
-        <div class="heart"></div>
-        <p class="message">Every day feels incomplete without you. Can't wait to see you again!</p>
-    </div>
+
+<div id="loader">Accessing System...</div>
+<div class="cursor" id="cursor"></div>
+
+<div class="container" id="card">
+    <img src="https://via.placeholder.com/150">
+
+    <h1 class="glitch" data-text="Your Name">Your Name</h1>
+    <p>Elite Hacker | Developer | Creator</p>
+
+    <a class="btn" href="#">Instagram</a>
+    <a class="btn" href="#" onclick="copyDiscord()">Discord</a>
+    <a class="btn" href="#">WhatsApp</a>
+</div>
+
+<audio id="sound" src="https://www.fesliyanstudios.com/play-mp3/4387"></audio>
+
+<script>
+/* Loader + Sound */
+window.onload = ()=>{
+    setTimeout(()=>{
+        document.getElementById("loader").style.display="none";
+        document.getElementById("sound").play();
+    },2000);
+};
+
+/* Cursor */
+document.addEventListener("mousemove",(e)=>{
+    const c=document.getElementById("cursor");
+    c.style.left=e.clientX+"px";
+    c.style.top=e.clientY+"px";
+});
+
+/* 3D tilt */
+document.addEventListener("mousemove",(e)=>{
+    const card=document.getElementById("card");
+    let x=(window.innerWidth/2 - e.clientX)/20;
+    let y=(window.innerHeight/2 - e.clientY)/20;
+    card.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`;
+});
+
+/* Copy Discord */
+function copyDiscord(){
+    navigator.clipboard.writeText("your_discord_username");
+    alert("Copied!");
+}
+</script>
+
 </body>
 </html>
