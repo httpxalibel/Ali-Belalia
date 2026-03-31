@@ -2,198 +2,148 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Cyber Hacker Page</title>
+<title>Ali Belalia | Developer</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: monospace;
-    cursor:none;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-/* Cursor */
-.cursor{
-    position:fixed;
-    width:15px;
-    height:15px;
-    border-radius:50%;
-    background:#00ff9f;
-    pointer-events:none;
-    box-shadow:0 0 20px #00ff9f;
-    z-index:9999;
-}
-
-/* Loader */
-#loader{
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:black;
-    color:#00ff9f;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:999;
-    font-size:20px;
-}
-
-/* Scanlines */
-body::after{
-    content:"";
-    position:fixed;
-    width:100%;
-    height:100%;
-    background: repeating-linear-gradient(
-        rgba(0,0,0,0.2) 0px,
-        rgba(0,0,0,0.2) 2px,
-        transparent 2px,
-        transparent 4px
-    );
-    pointer-events:none;
+body{
+    background:#0d1117;
+    color:#c9d1d9;
 }
 
 /* Container */
-body{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:white;
-    background:black;
-    overflow:hidden;
-}
-
 .container{
-    text-align:center;
-    padding:40px;
-    background:rgba(0,0,0,0.7);
-    border-radius:20px;
-    box-shadow:0 0 40px #00ff9f;
-    transform-style: preserve-3d;
-    transition:0.2s;
+    max-width:900px;
+    margin:auto;
+    padding:40px 20px;
 }
 
-/* Glitch */
-.glitch{
-    color:#00ff9f;
-    font-size:28px;
-    position:relative;
+/* Header */
+.header{
+    display:flex;
+    align-items:center;
+    gap:20px;
 }
 
-.glitch::before, .glitch::after{
-    content:attr(data-text);
-    position:absolute;
-    left:0;
-}
-
-.glitch::before{
-    color:red;
-    animation: glitch 1s infinite;
-}
-
-.glitch::after{
-    color:blue;
-    animation: glitch 1s infinite reverse;
-}
-
-@keyframes glitch{
-    0%{transform:translate(0);}
-    20%{transform:translate(-2px,2px);}
-    40%{transform:translate(2px,-2px);}
-    60%{transform:translate(-2px,-2px);}
-    80%{transform:translate(2px,2px);}
-    100%{transform:translate(0);}
-}
-
-/* Image */
-img{
-    width:140px;
+.header img{
+    width:100px;
     border-radius:50%;
-    border:2px solid #00ff9f;
-    box-shadow:0 0 20px #00ff9f;
-    margin-bottom:10px;
+    border:2px solid #30363d;
 }
 
-/* Buttons */
-.btn{
+.header h1{
+    font-size:28px;
+    color:#58a6ff;
+}
+
+.header p{
+    color:#8b949e;
+}
+
+/* Sections */
+.section{
+    margin-top:40px;
+}
+
+.section h2{
+    margin-bottom:15px;
+    color:#58a6ff;
+}
+
+/* Skills */
+.skills span{
     display:inline-block;
-    margin:8px;
-    padding:10px 20px;
-    border:1px solid #00ff9f;
-    color:#00ff9f;
+    background:#161b22;
+    padding:8px 12px;
+    margin:5px;
+    border-radius:6px;
+    border:1px solid #30363d;
+}
+
+/* Links */
+.links a{
+    display:inline-block;
+    margin:10px 10px 0 0;
+    padding:10px 15px;
+    border-radius:6px;
     text-decoration:none;
-    border-radius:20px;
+    color:white;
+    background:#238636;
     transition:0.3s;
 }
 
-.btn:hover{
-    background:#00ff9f;
-    color:black;
-    box-shadow:0 0 20px #00ff9f;
+.links a:hover{
+    background:#2ea043;
 }
 
-/* Fade */
-.container{
-    animation:fadeIn 2s ease;
+/* Card effect */
+.card{
+    background:#161b22;
+    padding:20px;
+    border-radius:10px;
+    border:1px solid #30363d;
+    transition:0.3s;
 }
 
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(20px);}
-    to{opacity:1; transform:translateY(0);}
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 20px rgba(88,166,255,0.2);
 }
 </style>
 </head>
 
 <body>
 
-<div id="loader">Accessing System...</div>
-<div class="cursor" id="cursor"></div>
+<div class="container">
 
-<div class="container" id="card">
-    <img src="https://via.placeholder.com/150">
+    <!-- Header -->
+    <div class="header card">
+        <img src="https://via.placeholder.com/150">
+        <div>
+            <h1>Ali Belalia</h1>
+            <p>Developer | Tech Enthusiast</p>
+        </div>
+    </div>
 
-    <h1 class="glitch" data-text="Your Name">Your Name</h1>
-    <p>Elite Hacker | Developer | Creator</p>
+    <!-- About -->
+    <div class="section card">
+        <h2>About Me</h2>
+        <p>
+            Passionate developer focused on building modern digital experiences.
+            I love technology, coding, and creating useful content.
+        </p>
+    </div>
 
-    <a class="btn" href="#">Instagram</a>
-    <a class="btn" href="#" onclick="copyDiscord()">Discord</a>
-    <a class="btn" href="#">WhatsApp</a>
+    <!-- Skills -->
+    <div class="section card">
+        <h2>Skills</h2>
+        <div class="skills">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>UI Design</span>
+            <span>Content Creation</span>
+        </div>
+    </div>
+
+    <!-- Links -->
+    <div class="section card">
+        <h2>Connect</h2>
+        <div class="links">
+            <a href="https://instagram.com/httpx.alibel">Instagram</a>
+            <a href="https://facebook.com/httpx.alibel">Facebook</a>
+            <a href="https://tiktok.com/httpx.alibel">TikTok</a>
+            <a href="https://wa.me/213676933224">WhatsApp</a>
+        </div>
+    </div>
+
 </div>
-
-<audio id="sound" src="https://www.fesliyanstudios.com/play-mp3/4387"></audio>
-
-<script>
-/* Loader + Sound */
-window.onload = ()=>{
-    setTimeout(()=>{
-        document.getElementById("loader").style.display="none";
-        document.getElementById("sound").play();
-    },2000);
-};
-
-/* Cursor */
-document.addEventListener("mousemove",(e)=>{
-    const c=document.getElementById("cursor");
-    c.style.left=e.clientX+"px";
-    c.style.top=e.clientY+"px";
-});
-
-/* 3D tilt */
-document.addEventListener("mousemove",(e)=>{
-    const card=document.getElementById("card");
-    let x=(window.innerWidth/2 - e.clientX)/20;
-    let y=(window.innerHeight/2 - e.clientY)/20;
-    card.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`;
-});
-
-/* Copy Discord */
-function copyDiscord(){
-    navigator.clipboard.writeText("your_discord_username");
-    alert("Copied!");
-}
-</script>
 
 </body>
 </html>
